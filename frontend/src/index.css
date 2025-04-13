@@ -1,0 +1,475 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.login-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #4338ca;
+}
+
+.home-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.file-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.file-table th,
+.file-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.file-table th {
+  background-color: #f9fafb;
+  text-align: left;
+  color: #555;
+}
+
+.file-table tr:hover {
+  background-color: #f3f4f6;
+}
+
+.download-link {
+  color: #007bff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.download-link:hover {
+  text-decoration: underline;
+}
+
+.forms-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.styled-form {
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  margin-bottom: 20px;
+}
+
+.styled-form h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.styled-form input[type="text"],
+.styled-form input[type="file"],
+.styled-form select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.styled-form select[multiple] {
+  height: 100px;
+}
+
+.styled-form button {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.styled-form button:hover {
+  background-color: #0056b3;
+}
+.file-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+}
+
+.file-table thead {
+  background-color: #f8fafc;
+  color: #333;
+  font-weight: 600;
+}
+
+.file-table th,
+.file-table td {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.file-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.file-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+.download-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.download-link:hover {
+  text-decoration: underline;
+}
+
+.table-wrapper {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1200px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.styled-table th {
+  background-color: #3b82f6;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.styled-table td {
+  border-bottom: 1px solid #ddd;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.styled-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.styled-table a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.styled-table a:hover {
+  text-decoration: underline;
+}
+
+.styled-table td[colspan="7"] {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 20px;
+  background-color: #1976D2;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ddd;
+}
+
+nav a:active {
+  color: #ccc;
+}
+
+nav span {
+  color: #fff;
+  font-size: 16px;
+}
+
+nav .auth-links {
+  margin-right: auto;
+}
+
+nav .auth-links a {
+  margin-right: 10px;
+}
+
+nav .auth-links a:last-child {
+  margin-right: 0;
+}
+
+button {
+  background-color: #1976D2;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #d21919;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  background-color: #d1d1d1;
+  cursor: not-allowed;
+}
+
+/* Стили для формы поиска */
+.file-search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.file-search-input {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  margin-right: 10px;
+}
+
+.file-search-input:focus {
+  border-color: #1976D2;
+}
+
+.file-search-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #1976D2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.file-search-button:hover {
+  background-color: #155aa0;
+}
+
+.file-search-button:active {
+  transform: scale(0.98);
+}
+
+/* Стили для кнопки архивации файлов */
+.archive-button {
+  margin: 20px auto;
+  display: block;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.archive-button:hover {
+  background-color: #1976D2;
+}
+
+.archive-button:active {
+  transform: scale(0.98);
+}
+
+.archive-button:disabled {
+  background-color: #d1d1d1;
+  cursor: not-allowed;
+}
+
+/* Стили для таблицы */
+.files-container {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+.files-container th,
+.files-container td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.files-container th {
+  background-color: #1976D2;
+  color: white;
+}
+
+.files-container tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.files-container tr:hover {
+  background-color: #f1f1f1;
+}
+
+.files-container a {
+  color: #2196F3;
+  text-decoration: none;
+}
+
+.files-container a:hover {
+  text-decoration: underline;
+}
+
+.files-container input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  height: 80%;
+  overflow-y: scroll;
+  width: 90%;
+  max-width: 600px;
+}
+
+.modal .form-input {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.modal .form-button {
+  margin-top: 10px;
+  margin-right: 10px;
+}
