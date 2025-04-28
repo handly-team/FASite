@@ -56,7 +56,7 @@ class FileDeleteView(generics.DestroyAPIView):
         user = self.request.user
         if file.owner != user and user not in file.can_delete_users.all():
             raise PermissionDenied("У вас нет прав на удаление этого файла.")
-        return file    
+        return file
 
 class CategoryView(generics.ListCreateAPIView):
     queryset = Category.objects.all()

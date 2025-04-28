@@ -15,7 +15,7 @@ function App() {
           {(localStorage.getItem("access")) ? "" : <Link to="/register">Регистрация</Link>}
         </div>
         <Link to="/">Файлы</Link> 
-        <Link to="/archiver">Архиватор</Link>
+        <Link to="/archiver">Создать архив</Link>
       </nav>
       <Routes>
         <Route path="/" element={(localStorage.getItem("access")) ? <Home /> : <Navigate to="/login" replace />}/>

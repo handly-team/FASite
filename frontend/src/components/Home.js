@@ -26,6 +26,7 @@ const Home = () => {
   const [editFile, setEditFile] = useState(null);
   
   const navigate = useNavigate();
+  const user = jwtDecode(localStorage.getItem("access"));
 
   useEffect(() => {
     const fetchData = async () => {
@@ -113,6 +114,10 @@ const Home = () => {
       newFile.can_view_users.forEach((id) => formData.append("can_view_users", id));
       newFile.can_edit_users.forEach((id) => formData.append("can_edit_users", id));
       newFile.can_delete_users.forEach((id) => formData.append("can_delete_users", id));
+      
+      users.forEach(u => (u.id === user.user_id || u.is_staff) ? formData.append('can_view_users', u.id) : null);
+      users.forEach(u => (u.id === user.user_id || u.is_staff) ? formData.append('can_edit_users', u.id) : null);
+      users.forEach(u => (u.id === user.user_id || u.is_staff) ? formData.append('can_delete_users', u.id) : null);
 
       await api.post("/file_management/files/create/", formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -218,8 +223,10 @@ const Home = () => {
             setNewFile({ ...newFile, can_view_users: selected });
           }}>
             <option disabled>Выберите пользователей с правом просмотра</option>
-            {users.map((u) => (
+            {users.map((u) => (u.id !== user.user_id && !u.is_staff) ? (
               <option key={u.id} value={u.id}>{u.username}</option>
+            ) : (
+              ""
             ))}
           </select>
 
@@ -228,8 +235,10 @@ const Home = () => {
             setNewFile({ ...newFile, can_edit_users: selected });
           }}>
             <option disabled>Выберите пользователей с правом редактирования</option>
-            {users.map((u) => (
+            {users.map((u) => (u.id !== user.user_id && !u.is_staff) ? (
               <option key={u.id} value={u.id}>{u.username}</option>
+            ) : (
+              ""
             ))}
           </select>
 
@@ -238,8 +247,10 @@ const Home = () => {
             setNewFile({ ...newFile, can_delete_users: selected });
           }}>
             <option disabled>Выберите пользователей с правом удаления</option>
-            {users.map((u) => (
+            {users.map((u) => (u.id !== user.user_id && !u.is_staff) ? (
               <option key={u.id} value={u.id}>{u.username}</option>
+            ) : (
+              ""
             ))}
           </select>
           <button type="submit" className="form-button">Добавить</button>
