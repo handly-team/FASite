@@ -1,5 +1,5 @@
 from rest_framework import generics
-from .serializers import FileListSerializer, CategorySerializer, TagSerializer, FileCreateSerializer
+from .serializers import FileListSerializer, CategorySerializer, TagSerializer, FileCreateSerializer, FileUpdateSerializer
 from .models import File, Category, Tag
 from rest_framework.parsers import MultiPartParser, FormParser
 from django.db.models import Q
@@ -17,10 +17,13 @@ class FileListView(generics.ListAPIView):
     
     def get_queryset(self):
         user = self.request.user
-        queryset = File.objects.filter(
-            Q(owner=user) |
-            Q(can_view_users=user)
-        ).distinct()
+        if user.is_staff:
+            queryset = File.objects.all()
+        else:
+            queryset = File.objects.filter(
+                Q(owner=user) |
+                Q(can_view_users=user)
+            ).distinct()
 
         query = self.request.query_params.get('search', None)
         if query:
@@ -39,7 +42,7 @@ class FileCreateView(generics.CreateAPIView):
 
 class FileUpdateView(generics.UpdateAPIView):
     queryset = File.objects.all()
-    serializer_class = FileCreateSerializer  # Можно сделать отдельный update-сериализатор, если нужно
+    serializer_class = FileUpdateSerializer
 
     def get_object(self):
         file = super().get_object()

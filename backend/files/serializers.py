@@ -34,6 +34,22 @@ class FileCreateSerializer(serializers.ModelSerializer):
             'category', 'tags',
             'can_view_users', 'can_edit_users', 'can_delete_users'
         ]
+        
+class FileUpdateSerializer(serializers.ModelSerializer):
+    can_view_users = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True, required=False)
+    can_edit_users = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True, required=False)
+    can_delete_users = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True, required=False)
+
+    class Meta:
+        model = File
+        fields = [
+            'id', 'owner', 'name', 'description', 'file',
+            'category', 'tags',
+            'can_view_users', 'can_edit_users', 'can_delete_users'
+        ]
+        extra_kwargs = {
+            'file': {'required': False}
+        }
 
 class FileListSerializer(serializers.ModelSerializer):
     owner = UserSerializer()

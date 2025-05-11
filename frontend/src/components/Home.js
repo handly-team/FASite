@@ -84,9 +84,10 @@ const Home = () => {
       }
       formData.append("category", editFile.category);
       editFile.tags.forEach(tagId => formData.append("tags", tagId));
-      editFile.can_view_users.forEach(id => formData.append("can_view_users", id));
-      editFile.can_edit_users.forEach(id => formData.append("can_edit_users", id));
-      editFile.can_delete_users.forEach(id => formData.append("can_delete_users", id));
+      editFile.can_view_users.forEach(id => id ? formData.append("can_view_users", id) : null);
+      editFile.can_edit_users.forEach(id => id ? formData.append("can_view_users", id) : null);
+      editFile.can_delete_users.forEach(id => id ? formData.append("can_view_users", id) : null);
+      console.log(...formData);
       console.log([...formData.entries()]);
       await api.patch(`/file_management/files/${editFile.id}/edit/`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -293,27 +294,33 @@ const Home = () => {
               const selected = Array.from(e.target.selectedOptions, opt => parseInt(opt.value));
               setEditFile({ ...editFile, can_view_users: selected });
             }}>
-              {users.map((u) => (
-                <option key={u.id} value={u.id}>{u.username}</option>
-              ))}
+              {users.map((u) => (u.id !== user.user_id && !u.is_staff) ? (
+              <option key={u.id} value={u.id}>{u.username}</option>
+            ) : (
+              ""
+            ))}
             </select>
 
             <select className="form-input" multiple value={editFile.can_edit_users} onChange={(e) => {
               const selected = Array.from(e.target.selectedOptions, opt => parseInt(opt.value));
               setEditFile({ ...editFile, can_edit_users: selected });
             }}>
-              {users.map((u) => (
-                <option key={u.id} value={u.id}>{u.username}</option>
-              ))}
+              {users.map((u) => (u.id !== user.user_id && !u.is_staff) ? (
+              <option key={u.id} value={u.id}>{u.username}</option>
+            ) : (
+              ""
+            ))}
             </select>
 
             <select className="form-input" multiple value={editFile.can_delete_users} onChange={(e) => {
               const selected = Array.from(e.target.selectedOptions, opt => parseInt(opt.value));
               setEditFile({ ...editFile, can_delete_users: selected });
             }}>
-              {users.map((u) => (
-                <option key={u.id} value={u.id}>{u.username}</option>
-              ))}
+              {users.map((u) => (u.id !== user.user_id && !u.is_staff) ? (
+              <option key={u.id} value={u.id}>{u.username}</option>
+            ) : (
+              ""
+            ))}
             </select>
 
             <button className="form-button" onClick={handleSaveEdit}>Сохранить</button>
